@@ -28,6 +28,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   void register(BuildContext context) async{
     if (formKey.currentState!.validate()) {
       changeLoading();
+     
       if (nameController.text.isNotEmpty &&
           emailController.text.isNotEmpty &&
           passwordController.text.isNotEmpty) {
@@ -45,9 +46,9 @@ class RegisterCubit extends Cubit<RegisterState> {
       }
       if (isRegisterFail == false) {
         registerSuccess(context);
-      } else {
-        changeLoading();
       }
+        changeLoading();
+      
     }
   }
 

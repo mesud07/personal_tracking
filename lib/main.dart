@@ -21,7 +21,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+
+      title: 'Personal Trackking',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
        
         primarySwatch: Colors.blueGrey,

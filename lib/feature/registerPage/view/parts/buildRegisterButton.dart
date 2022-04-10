@@ -8,7 +8,8 @@
             
             func: () {
               context.read<RegisterCubit>().register(context);
-            }, isloading: false,
+            },
+             isloading: context.read<RegisterCubit>().isLoading,
           );
         });
   }
