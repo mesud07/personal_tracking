@@ -17,28 +17,10 @@ class LoginCubit extends Cubit<LoginState> {
   bool isLoading = false;
   bool passObsecure=false;
    GlobalKey<FormState> formKey=GlobalKey();
-
    TextEditingController emailController=TextEditingController();
    TextEditingController passwordController=TextEditingController();
 
-   
-  // Future<void> login() async {
-  //   if (formKey.currentState?.validate()??false) {
-  //     changeLoading();
-  //     try {
-  //       await loginService?.signInWithEmailAndPassword(
-          
-  //         emailController.text,
-  //         passwordController.text,
-  //       );
-  //       emit(LoginSuccess());
-  //     } catch (e) {
-  //       emit(LoginFailure(error: e.toString()));
-  //     }
-  //   }else{
-  //     print("null abi");
-  //   }
-  // }
+
 
             login(BuildContext context)async {
                         if (
