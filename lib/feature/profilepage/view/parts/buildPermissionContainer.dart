@@ -7,14 +7,15 @@
                                       right: 8, top: 50,bottom: 20),
                                   child: CustomButton(
                                       text: ProfilePageStrings.permissionButtonText,
-                                      isLoading: false,
+                                    
                                       func: () =>
                                           Navigator.pushAndRemoveUntil(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (_) =>
                                                       AllowingPageView()),
-                                              (route) => false)),
+                                              (route) => false),
+                                               isloading: false,),
                                 ),
                               );
   }

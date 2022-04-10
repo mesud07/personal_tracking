@@ -5,7 +5,7 @@ class UserModel {
   String? email;
   int? inoutNumber;
   String? workName;
-  bool? ismen;
+  bool? ismale;
   List<dynamic>? allowingList;
   List<dynamic>? mesaiTakibi;
  
@@ -14,7 +14,7 @@ class UserModel {
     required this.email,
     required this.inoutNumber,
     required this.workName,
-    required this.ismen,
+    required this.ismale,
     required this.allowingList,
     required this.mesaiTakibi,
   });
@@ -24,7 +24,7 @@ class UserModel {
     email = json["email"];
     inoutNumber = json["inoutnumber"];
     workName = json['workName'];
-    ismen=json['ismen'];
+    ismale=json['ismale'];
     allowingList=List.generate(json['allowingList']?.length??0, (index) => AllowingModel.fromJson(json['allowingList'][index]));
     mesaiTakibi = List.generate(json['mesaiTakibi']?.length ?? 0, (index) => MesaiModel.fromJson(json['mesaiTakibi'][index]));
    

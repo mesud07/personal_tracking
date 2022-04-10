@@ -11,30 +11,29 @@
                               ListView.builder(
                                   padding: EdgeInsets.only(
                                     left: 8,
+                                    bottom: 10
                                   ),
                                   scrollDirection: Axis.vertical,
                                   itemCount: context
                                       .read<ProfileCubit>()
-                                      .user
-                                      ?.mesaiTakibi
-                                      ?.length,
+                                      .reversedOverTimeList?.length,
                                   itemBuilder: (context, index) {
                                     return buildOvertimeContainer(context, index);
                                   }),
 
                               ListView.builder(
-                                  padding: EdgeInsets.only(top: 0),
+                                 padding:const EdgeInsets.only(
+                                    left: 8,
+                                    bottom: 10
+                                  ),
                                   scrollDirection: Axis.vertical,
                                   itemCount: context
                                       .read<ProfileCubit>()
-                                      .user
-                                      ?.allowingList
-                                      ?.length,
+                                      .reversedAllowingList?.length,
                                   itemBuilder: (_, index) {
                                     AllowingModel model = context
                                         .read<ProfileCubit>()
-                                        .user
-                                        ?.allowingList?[index];
+                                        .reversedAllowingList?[index];
                                     return _buildPermissionStatus(context, model);
                                   }),
                             ],

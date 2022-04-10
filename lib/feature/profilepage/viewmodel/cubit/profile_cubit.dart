@@ -11,7 +11,9 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
   ProfileService _profileService = ProfileService();
   UserModel? user;
-  List? reversedList;
+  List<dynamic>? reversedOverTimeList;
+  List<dynamic>? reversedAllowingList;
+
    bool isLoading = false;
 
   init()async{
@@ -23,10 +25,15 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   getData()async{
    user =await _profileService.getUser();
+   reversedOverTimeList=user?.mesaiTakibi?.reversed.toList();
+   reversedAllowingList = user?.allowingList?.reversed.toList();
+   
   }
   
 
     void changeLoading() {
     isLoading = !isLoading;
   }
+
+  
 }

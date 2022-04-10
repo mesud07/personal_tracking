@@ -10,7 +10,7 @@ class RegisterService {
       required String? email,
       required String? password,
       required String? workName,
-      required bool? ismen
+      required bool? ismale
       }) async {
         String res="";
     try {
@@ -27,7 +27,7 @@ class RegisterService {
         'email': email,
         'inoutnumber':0,
         'workName':workName,
-        'ismen':ismen,
+        'ismale':ismale,
         'mesaiTakibi':[],
         'izinListesi': [],
       });

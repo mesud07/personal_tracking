@@ -25,8 +25,57 @@ class AllowingPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AllowingCubit(),
-      child: Scaffold(
-        appBar: AppBar(
+      child: WillPopScope(
+         onWillPop:(){
+        Navigator.pushNamedAndRemoveUntil(context, "/profilePage", (route) => false);
+        return Future.value(false);
+      },
+        child: Scaffold(
+          appBar: _buildAppBar(context),
+          body: BlocConsumer<AllowingCubit, AllowingState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              return SingleChildScrollView(
+                child: Container(
+                  height: context.height,
+                  padding: EdgeInsets.only(bottom: context.height / 5),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Form(
+                        key: context.read<AllowingCubit>().formKey,
+                        child: Padding(
+                          padding: context.horizontalPaddingLow,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: ()=>context.read<AllowingCubit>().addRange(context),
+                                child: _buildSelectDateRangeButton(context),
+                              ),
+                             // if (context.read<AllowingCubit>().dateRange != null)
+                               if(state is AllowingLoading)
+                                _buildShowDateRangeContainer(context),
+                              _buildReasonText(context)
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: context.height * 0.02),
+                      _buildSendButton(context),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
           backgroundColor: Colors.white,
           title: Text(
             "İzin Formu",
@@ -44,61 +93,6 @@ class AllowingPageView extends StatelessWidget {
                 (route) => false),
           ),
           centerTitle: true,
-        ),
-        body: BlocConsumer<AllowingCubit, AllowingState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            return SingleChildScrollView(
-              child: Container(
-                height: context.height,
-                padding: EdgeInsets.only(bottom: context.height / 5),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Form(
-                      key: context.read<AllowingCubit>().formKey,
-                      child: Padding(
-                        padding: context.horizontalPaddingLow,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () async {
-                                final initialDateRange = DateTimeRange(
-                                    start: DateTime.now(),
-                                    end: DateTime.now().add(Duration(days: 1)));
-
-                                final newDateRange = await showDateRangePicker(
-                                  context: context,
-                                  firstDate: DateTime(DateTime.now().year - 5),
-                                  lastDate: DateTime(DateTime.now().year + 5),
-                                  initialDateRange:
-                                      context.read<AllowingCubit>().dateRange ??
-                                          initialDateRange,
-                                );
-                                if (newDateRange == null) return;
-                                context
-                                    .read<AllowingCubit>()
-                                    .synchronizeDate(newDateRange);
-                              },
-                              child: _buildSelectDateRangeButton(context),
-                            ),
-                            if (context.read<AllowingCubit>().dateRange != null)
-                              _buildShowDateRangeContainer(context),
-                            _buildReasonText(context)
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: context.height * 0.02),
-                    _buildSendButton(context),
-                  ],
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-    );
+        );
   }
 }

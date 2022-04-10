@@ -1,6 +1,6 @@
 part of login_view.dart;
 
- InkWell _buildLoginButton(BuildContext context) {
+ InkWell _buildGoRegisterButton(BuildContext context) {
     return InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, '/registerPage');

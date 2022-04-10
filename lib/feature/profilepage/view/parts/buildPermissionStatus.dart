@@ -6,10 +6,7 @@
                                       height: context.height / 10,
                                       margin: const EdgeInsets.only(
                                           right: 10, top: 10, bottom: 0),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.white),
+                                      decoration: _buildDecoration(),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -51,4 +48,5 @@
                                         ],
                                       ),
                                     );
+                                    
   }
