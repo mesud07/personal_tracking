@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
+import '../../../../core/constants/string/loginpageStrings.dart';
 import '../../service/login_service.dart';
 part 'login_state.dart';
 
@@ -37,6 +39,23 @@ class LoginCubit extends Cubit<LoginState> {
   //     print("null abi");
   //   }
   // }
+
+            login(BuildContext context)async {
+                        if (
+                            formKey
+                            .currentState!
+                            .validate()) {
+                              changeLoading();
+                             
+                        await  LoginService().signInWithEmailAndPassword(
+                              context: context,
+                              email: emailController.text,
+                              password:passwordController.text)
+                              .onError((error, stackTrace) =>
+                               ScaffoldMessenger.of(context).showSnackBar(LoginPageString().snackBar));
+                               changeLoading();
+                               }
+                        }
 
   void changeLoading() {
     isLoading = !isLoading;

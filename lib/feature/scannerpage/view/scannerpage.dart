@@ -38,28 +38,32 @@ class _QrScannerPageState extends State<QrScannerPage> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors().nightblue,
-        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: ()=>Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>ProfilePage()), (route) => false),)),
-      body: Stack(
-        alignment: Alignment.center,
-        children:[
-      buildQrView(),
-      Positioned(
-        bottom: 10,
-        child: Container(
-          color: Colors.white24,
-          padding: const EdgeInsets.all(8.0),
-          child: Text(barcode?.code??"scan code",
-          style: Theme.of(context).textTheme.headline4?.copyWith(color: Colors.white),),
-        )),
+    return WillPopScope(
+      onWillPop:(){
+        Navigator.pushNamedAndRemoveUntil(context, "/profilePage", (route) => false);
+        return Future.value(false);
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors().nightblue,
+          leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: ()=>Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>ProfilePage()), (route) => false),)),
+          
+        body: Stack(
+          alignment: Alignment.center,
+          children:[
        
-           
-      ]),
-      
+        buildQrView(),
+       
+         
+             
+        ]),
+        
+      ),
     );
   }
+
+
+
   Widget buildQrView(){
     return QRView(key: qrkey,
      onQRViewCreated: onQRViewCreated,

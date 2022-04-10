@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:kartal/kartal.dart';
 import 'package:lottie/lottie.dart';
-import 'package:personaltracking/core/constants/string/profilePateStrings.dart';
+import 'package:personaltracking/core/constants/string/profilepageStrings.dart';
 import 'package:personaltracking/core/widgets/custom_button.dart';
 import 'package:personaltracking/feature/allowingformPage/view/allowingpageview.dart';
 import 'package:personaltracking/feature/profilepage/viewmodel/cubit/profile_cubit.dart';
@@ -43,62 +43,58 @@ class _ProfilePageState extends State<ProfilePage>
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
-                  : Container(
-                      height: context.height,
-                      //color: Color(0xffEF8052),
-
-                      child: SingleChildScrollView(
-                        child: Column(children: [
-                          Container(
-                            //height: context.height * 1.1 / 2,
-                            width: double.infinity,
-                            padding:
-                                const EdgeInsets.only(bottom: 20, left: 15),
-                            decoration: topContainerDecoration(),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                  : SingleChildScrollView(
+                    child: Column(
+                      
+                      children: [
+                      Container(
+                        //height: context.height * 1.1 / 2,
+                        width: double.infinity,
+                        padding:
+                            const EdgeInsets.only(bottom: 20, left: 15),
+                        decoration: topContainerDecoration(),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: context.height / 10,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                               children: [
-                                SizedBox(
-                                  height: context.height / 10,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    _buildAvatarImage(context),
-                                    _buildQRCodeButton(context),
-                                  ],
-                                ),
-                               
-                                  Container(
-                                    padding: EdgeInsets.only(left: 10),
-                                    child: Column(
-                                      children: [
-                                         _buildNameText(context),
-                                if (context
-                                        .read<ProfileCubit>()
-                                        .user
-                                        ?.workName !=
-                                    null)
-                                        _buildWorkNameText(context),
-                                        
-                                      ],
-                                    ),
-                                  ),
-                                _buildPermissionContainer(context),
+                                _buildAvatarImage(context),
+                                _buildQRCodeButton(context),
                               ],
                             ),
-                          ),
-
-                          //Orta buton
-
-                          _buildTabbarMenu(_tabController),
-
-                          _buildTabbarView(context, _tabController),
-                        ]),
+                           
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                   _buildNameText(context),
+                            if (context
+                                  .read<ProfileCubit>()
+                                  .user
+                                  ?.workName !=
+                              null)
+                                  _buildWorkNameText(context),
+                                  
+                                ],
+                              ),
+                            _buildPermissionContainer(context),
+                          ],
+                        ),
                       ),
-                    ));
+                  
+                      //Orta buton
+                  
+                      _buildTabbarMenu(_tabController),
+                  
+                      _buildTabbarView(context, _tabController),
+                     
+                    ]),
+                  ));
         },
       ),
     );

@@ -18,7 +18,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController workNameController = TextEditingController();
-  bool ismen=false;
+  bool ismale=false;
   FocusNode emailFocus = FocusNode();
   FocusNode passwordFocus = FocusNode();
   FocusNode nameFocus = FocusNode();
@@ -37,7 +37,7 @@ class RegisterCubit extends Cubit<RegisterState> {
           email: emailController.text,
           password: passwordController.text,
           workName: workNameController.text,
-          ismen:ismen
+          ismale:ismale
         )
             .catchError((e) {
           emit(RegisterFailure(error: e.toString()));
@@ -56,8 +56,8 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(RegisterLoading(isLoading: isLoading));
   }
 
-  void changeGender(bool ismen){
-    this.ismen=ismen;
+  void changeGender(bool ismale){
+    this.ismale=ismale;
     emit(RegisterInitial());
   }
 

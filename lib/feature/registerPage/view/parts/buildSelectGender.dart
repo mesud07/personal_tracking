@@ -29,13 +29,13 @@ InkWell selectGender(BuildContext context,IconData icon,int index,bool deger) {
                             color: Colors.white),
                           child: Icon(icon,size: context.height/10,
                           color: 
-                           context.read<RegisterCubit>().ismen==deger && icon==Icons.female?Colors.red:
-                          context.read<RegisterCubit>().ismen== deger && icon==Icons.male?Colors.black:Colors.grey),
+                           context.read<RegisterCubit>().ismale==deger && icon==Icons.female?Colors.red:
+                          context.read<RegisterCubit>().ismale== deger && icon==Icons.male?Colors.black:Colors.grey),
                   
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 10),
-                          child: Text(index==0?"Woman":"Men")),
+                          child: Text(index==0?"Female":"Male")),
                       ],
                     ),
                   );

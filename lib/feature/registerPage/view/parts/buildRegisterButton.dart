@@ -5,10 +5,10 @@
         builder: (context, state) {
           return CustomButton(
             text: 'Kayıt Ol',
-            isLoading: false,
+            
             func: () {
               context.read<RegisterCubit>().register(context);
-            },
+            }, isloading: false,
           );
         });
   }

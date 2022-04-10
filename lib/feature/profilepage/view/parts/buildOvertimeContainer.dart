@@ -5,18 +5,7 @@ part of profilepageview.dart;
       width: context.width,
       height: context.height / 10,
       margin: const EdgeInsets.only(right: 10, top: 10, bottom: 0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: Offset(0, 0), // changes position of shadow
-          ),
-        ],
-      ),
+      decoration: _buildDecoration(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,10 +16,13 @@ part of profilepageview.dart;
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom:5.0),
+                  child: Text(
+                      "${DateFormat('dd/MM').format(context.read<ProfileCubit>().reversedOverTimeList?[index].time)}"),
+                ),
                 Text(
-                    "${DateFormat('dd/MM').format(context.read<ProfileCubit>().user?.mesaiTakibi?[index].time)}"),
-                Text(
-                  "${context.read<ProfileCubit>().user?.mesaiTakibi?[index].type} yapıldı",
+                  "${context.read<ProfileCubit>().reversedOverTimeList?[index].type} yapıldı".toUpperCase(),
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ],
@@ -39,11 +31,11 @@ part of profilepageview.dart;
           Row(
             children: [
               Text(
-                  "${context.read<ProfileCubit>().user?.mesaiTakibi?[index].time.hour.toString()}:${context.read<ProfileCubit>().user?.mesaiTakibi?[index].time.minute.toString()}"),
+                  "${DateFormat('HH:MM').format(context.read<ProfileCubit>().reversedOverTimeList?[index].time)}"),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.asset(
-                  context.read<ProfileCubit>().user?.mesaiTakibi?[index].type ==
+                  context.read<ProfileCubit>().reversedOverTimeList?[index].type ==
                           "giriş"
                       ? ProfilePageStrings.inAsset
                       : ProfilePageStrings.outAsset,
@@ -56,3 +48,18 @@ part of profilepageview.dart;
       ),
     );
   }
+
+ BoxDecoration _buildDecoration() {
+   return BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 2,
+          blurRadius: 5,
+          offset: Offset(0, 0), // changes position of shadow
+        ),
+      ],
+    );
+ }
