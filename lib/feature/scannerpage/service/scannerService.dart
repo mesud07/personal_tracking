@@ -61,7 +61,7 @@ void _showMaterialDialog(BuildContext context,String type) {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Center(child: Text(type +"başarıyla yapıldı")),
+            title: Center(child: Text(type.toUpperCase() +" başarıyla yapıldı".toUpperCase())),
             content: Container(
               height: context.height/5,
               child: Image.asset(type=="giriş"?ProfilePageStrings.inAsset:ProfilePageStrings.outAsset,))
