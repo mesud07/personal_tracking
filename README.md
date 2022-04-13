@@ -2,6 +2,20 @@
 
 <div align='center'><h1>Personal Tracking</h1></div>
 
+<h2>Uygulamanın amacı</h2>
+-QR kod ile herhangi bir yerden giriş veya çıkış yapmasını ve takibini sağlamak,<br>
+-Yıllık izin alımlarını kolaylıkla yapılabilmesini sağlamak,<br><br>
+
+Uygulama şuanda çalışır durumdadır. İçerisinde "data" değerini taşıyan QR ile giriş - çıkış yaptırabilirsiniz.<br>
+Authentication ve veritabanı olarak Firebase kullandım.<br>
+MVVM mimarisine uygun şekilde yapmaya çalıştım.<br>
+Bloc & Cubit StateManagement kullanıldı.<br>
+<br><br>
+
+
+
+
+
 
 
 <div align='center'><h1>SAYFALAR</h1></div>
