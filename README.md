@@ -9,7 +9,7 @@
 
  <div align='center'><h3>Login - Register</h3></div>
  <div align='center'>
-<img height='380' width='200' src="https://user-images.githubusercontent.com/56825677/163137619-e05d2533-33d1-491a-b2ed-973264800b8f.pn"> </img>
+<img height='380' width='200' src="https://user-images.githubusercontent.com/56825677/163137619-e05d2533-33d1-491a-b2ed-973264800b8f.png"> </img>
 <img height='380' width='200' src="https://user-images.githubusercontent.com/56825677/163137625-753e4770-60f6-499b-bccb-19641e659a94.png"> </img>
 </div>
 
